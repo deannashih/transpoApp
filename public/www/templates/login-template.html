@@ -1,0 +1,32 @@
+<div>
+<div class="row text-center">
+  <div class="col-xs-12">
+    <div ng-show="!viewModel" class="sp-loading">
+      <img src="../../www/lib/loading/loading-bubbles.svg">
+    </div>
+    <h2>sign in below to view your saved locations</h2>
+    <form class="form-horizontal" ng-hide="accepted || !viewModel" ng-submit="submit()">
+      <div class="form-group" ng-repeat="field in viewModel.form.fields">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <input class="form-control auth" name="{{field.name}}" id="sp-{{field.name}}" type="{{field.type}}" ng-model="formModel[field.name]" placeholder="{{field.placeholder}}" ng-disabled="posting" ng-required="field.required">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <p class="text-danger" ng-show="error" ng-bind="error"></p>
+          <button type="submit" class="btn green" ng-disabled="posting">Log In</button>
+          <a href="/forgot">Forgot Password</a>
+        </div>
+      </div>
+      <div class="form-group" ng-show="viewModel.accountStores.length">
+        <div class="col-sm-offset-4 col-sm-4">
+          <p>Or log in with:</p>
+          <button ng-repeat="accountStore in viewModel.accountStores" type="button" class="btn btn-social btn-{{accountStore.provider.providerId}}" sp-social-login="{{accountStore.provider.providerId}}" sp-client-id="{{accountStore.provider.clientId}}" sp-scope="{{accountStore.provider.scope}}">
+            {{providerName}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>

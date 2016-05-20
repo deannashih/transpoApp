@@ -1,0 +1,80 @@
+<ion-view view-title="Home">
+  <ion-content>
+
+    <div class="container-fluid" ng-if="!locationLoaded">
+
+      <div class="row text-center">
+        <br>
+        <br>
+        <br>
+        <img src="../../www/lib/loading/loading-spinning-bubbles.svg">
+        <h6>Sit tight! We're searching for your nearest metro station.</h6>
+      </div>
+
+    </div>
+
+    <div class="container-fluid white" ng-if="locationLoaded">
+
+      <div class="row text-center">
+
+          <!-- <h4><a ui-sref="auth.register">register</a></h4>
+          <h4><a ui-sref="auth.login">log in</a></h4>
+          <h4><a sp-logout>log out</a></h4> -->
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="left">
+                  <strong>Your current city:</strong>
+                </td>
+                <td class="right">
+                  {{location.currentCity}}
+                  <button class="btn btn-red" ng-click="saveLocation(location)">save this city</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="left">
+                  <strong>Nearest Metro Station:</strong>
+                </td>
+                <td class="right">
+                  {{location.nearestStation}}
+                  <br>
+                  ({{location.miles}} miles away)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        <!-- <button class="btn btn-red" ng-click="setAsHome(location)">set as home</button> -->
+
+
+
+      </div> <!--location loaded -->
+    </div>
+    <div class="container-fluid gray">
+      <div class="row text-center" ng-if="locationLoaded">
+      <h2 id="departures">Departure Times</h2>
+    </div>
+
+      <div class="col-xs-12 card" ng-repeat="(route, times) in location.departures">
+
+        <div class="card-header">
+
+          <h2 class="text-center">{{route}}</h2>
+        </div>
+        <div class="card-block">
+          <ul>
+            <li ng-repeat="time in times | limitTo: quantity">{{time}}</li>
+          </ul>
+
+          <button class="btn btn-red" ng-click="seeMore()" ng-show="limited">See More</button>
+          <button class="btn btn-red" ng-click="hide()" ng-show="notLimited">Hide</button>
+
+        </div>
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>

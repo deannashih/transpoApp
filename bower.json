@@ -1,0 +1,25 @@
+{
+  "name": "pubTranspoDB",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Deanna Shih"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngCordova": "^0.1.26-alpha",
+    "jquery": "^2.2.3",
+    "angular-ui-router": "^0.2.18",
+    "bootstrap": "v4.0.0-alpha.2"
+  }
+}

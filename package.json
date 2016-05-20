@@ -1,0 +1,43 @@
+{
+  "name": "pubTranspoDB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "async": "^2.0.0-rc.5",
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.1",
+    "cors": "^2.7.1",
+    "del": "^2.2.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "express-stormpath": "^3.1.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-flatten": "^0.2.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "moment": "^2.13.0",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.4.17",
+    "morgan": "^1.7.0",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "post install": "bower i"
+  },
+  "engines": {
+    "node": "4.3.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

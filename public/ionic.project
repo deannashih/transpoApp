@@ -1,0 +1,10 @@
+{
+  "name": "pubTranspo",
+  "app_id": "c9c4c95c",
+  "proxies": [
+    {
+      "path": "/locations",
+      "proxyUrl": "https://publictranspodb.herokuapp.com/locations"
+    }
+  ]
+}
