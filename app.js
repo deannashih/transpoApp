@@ -25,26 +25,26 @@ mongoose.connect(mongoUrl, function(err){
 
 var app = express();
 
-app.use(stormpath.init(app, {
-  client: {
-    apiKey: {
-      id: process.env.STORMPATH_CLIENT_APIKEY_ID,
-      secret: process.env.STORMPATH_CLIENT_APIKEY_SECRET,
-    }
-  },
-  application: {
-    href: process.env.STORMPATH_APPLICATION_HREF
-  },
-  web: {
-      register: {
-      enabled: true
-    }
-  }
-}));
-
-app.on('stormpath.ready', function() {
-  console.log('stormpath ready');
-});
+// app.use(stormpath.init(app, {
+//   client: {
+//     apiKey: {
+//       id: process.env.STORMPATH_CLIENT_APIKEY_ID,
+//       secret: process.env.STORMPATH_CLIENT_APIKEY_SECRET,
+//     }
+//   },
+//   application: {
+//     href: process.env.STORMPATH_APPLICATION_HREF
+//   },
+//   web: {
+//       register: {
+//       enabled: true
+//     }
+//   }
+// }));
+//
+// app.on('stormpath.ready', function() {
+//   console.log('stormpath ready');
+// });
 
 app.use(morgan('dev'));
 app.use(cors());

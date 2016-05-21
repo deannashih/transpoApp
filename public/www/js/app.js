@@ -5,11 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.services', 'ngCordova', 'stormpath', 'stormpath.templates'])
+angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.services', 'ngCordova'])
   .constant('API', {
     url: 'http://localhost:3000/'
   })
-  .run(function($ionicPlatform, $stormpath) {
+  .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -23,10 +23,10 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
         StatusBar.styleDefault();
       }
     });
-    $stormpath.uiRouter({
-      loginState: 'login',
-      defaultPostLoginState: 'tab.favorites'
-    });
+    // $stormpath.uiRouter({
+    //   loginState: 'login',
+    //   defaultPostLoginState: 'tab.favorites'
+    // });
   })
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -52,7 +52,7 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
         .state('tab', {
         url: '/tab',
         abstract: true,
-        templateUrl: 'www/templates/tabs.html'
+        templateUrl: 'templates/tabs.html'
       })
 
       // Each tab has its own nav history stack:
@@ -61,7 +61,7 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
         url: '/home',
         views: {
           'tab-home': {
-            templateUrl: 'www/templates/home.html',
+            templateUrl: 'templates/home.html',
             controller: 'HomeCtrl'
           }
         }
@@ -71,7 +71,7 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
           url: '/favorites',
           views: {
             'tab-favorites': {
-              templateUrl: 'www/templates/favorites.html',
+              templateUrl: 'templates/favorites.html',
               controller: 'FaveCtrl'
             },
             sp: {
@@ -83,7 +83,7 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
           url: '/favorites/{id}',
           views: {
             'tab-favorites': {
-              templateUrl: 'www/templates/favorites-detail.html',
+              templateUrl: 'templates/favorites-detail.html',
               controller: 'HomeCtrl'
             }
           }
@@ -92,32 +92,32 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
         url: '/about',
         views: {
           'tab-about': {
-            templateUrl: 'www/templates/about.html',
+            templateUrl: 'templates/about.html',
             controller: 'AboutCtrl'
           }
         }
-      })
+      });
 
 
-      .state('auth', {
-        url:'/auth',
-        templateUrl: 'www/templates/auth.html',
-        abstract:true
-      })
-
-
-      .state('auth.register', {
-          url: '/register',
-          templateUrl: 'www/templates/register.html',
-          controller: 'authCtrl'
-          }
-        )
-        .state('auth.login', {
-            url: '/login',
-            templateUrl: 'www/templates/login.html',
-            controller: 'authCtrl'
-
-        });
+      // .state('auth', {
+      //   url:'/auth',
+      //   templateUrl: 'www/templates/auth.html',
+      //   abstract:true
+      // })
+      //
+      //
+      // .state('auth.register', {
+      //     url: '/register',
+      //     templateUrl: 'www/templates/register.html',
+      //     controller: 'authCtrl'
+      //     }
+      //   )
+      //   .state('auth.login', {
+      //       url: '/login',
+      //       templateUrl: 'www/templates/login.html',
+      //       controller: 'authCtrl'
+      //
+      //   });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('tab/home');
