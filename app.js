@@ -15,7 +15,7 @@ require('dotenv').config();
 var mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 3000;
-var mongoUrl = 'mongodb://localhost:27017/pubtranspo-db' || process.env.MONGODB_URI;
+var mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/pubtranspo-db';
 // var mongoUrl = 'mongodb://localhost:27017/pubtranspo-db';
 
 mongoose.connect(mongoUrl, function(err){
