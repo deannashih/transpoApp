@@ -80,7 +80,7 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
           views: {
             'tab-favorites': {
               templateUrl: 'templates/favorites-detail.html',
-              controller: 'HomeCtrl'
+              controller: 'FaveCtrl'
             }
           }
         })

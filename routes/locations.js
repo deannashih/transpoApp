@@ -160,10 +160,11 @@ router.post('/:savedId', function(req, res) {
             return res.status(400).send(err);
           }
           body2 = JSON.parse(body2);
-          console.log("body 2", body2);
 
           var long2 = body2.places_nearby[0].stop_area.coord.lon;
           var lat2 = body2.places_nearby[0].stop_area.coord.lat;
+          console.log("long 2", long2);
+          console.log("lat2", lat2);
           var nearestStation = body2.places_nearby[0].stop_area.name;
           var miles = parseInt(body2.places_nearby[0].distance) * 0.00062137;
 
