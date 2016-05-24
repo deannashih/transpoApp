@@ -1,18 +1,36 @@
 
-<ion-view view-title="{{location}}">
+<ion-view view-title="{{location.currentCity}}">
   <ion-content>
 
-    <div class="container-fluid">
-      <div class="row">
-
-
-<div class="col-xs-12 text-center">
-    <h3>your saved city</h3>
-    <h2>{{location.currentCity}}</h2>
+    <div class="container-fluid white">
+      <div class="row text-center">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="left">
+                <strong>Your saved city:</strong>
+              </td>
+              <td class="right">
+                <strong>{{location.currentCity}}</strong>
+                <button class="btn btn-red" ng-click="saveLocation(location)">save this city</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="left">
+                <strong>Nearest Metro Station:</strong>
+              </td>
+              <td class="right">
+                <strong>{{location.nearestStation}}</strong>
+                <br>
+                <strong>({{location.miles}} miles away)</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
   </div>
-    <h2 ng-show="error">Your region is not covered.</h2>
 
   </div>
+</ion-content>
   <div class="row text-center">
 
     <button class="btn btn-red" ng-click="setAsHome(location)">set as home</button>

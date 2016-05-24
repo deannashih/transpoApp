@@ -4,7 +4,7 @@
   "proxies": [
     {
       "path": "/locations",
-      "proxyUrl": "http://localhost:3000/locations"
+      "proxyUrl": "http://public-transportation-app.herokuapp.com/locations"
     }
   ]
 }
