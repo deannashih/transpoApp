@@ -48,9 +48,9 @@ angular.module('transpoApp.controllers', [])
                 .then(function(res){
                   console.log("pass Saved location res", res.data);
                   $scope.locationLoaded = true;
-                  
+                  console.log("selectedLocation", selectedLocation);
                   $state.go('tab.favorites-detail', {
-                    'id':marker.title
+                    'id':selectedLocation.id
                   })
                 })
 

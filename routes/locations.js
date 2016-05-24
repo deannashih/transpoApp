@@ -166,7 +166,6 @@ router.post('/:savedId', function(req, res) {
           var lat2 = body2.places_nearby[0].stop_area.coord.lat;
           var nearestStation = body2.places_nearby[0].stop_area.name;
           var miles = parseInt(body2.places_nearby[0].distance) * 0.00062137;
-          console.log("nearestStation", nearestStation);
 
           var dateTime = new Date();
           console.log("dateTimeBefore", dateTime);
@@ -177,7 +176,6 @@ router.post('/:savedId', function(req, res) {
             hour12: false
           });
           time = 'T' + time.split(':').join('').substring(0, 4);
-          console.log("time", time);
           dateTime = date + time;
 
           var navitiaReqTwo = `https://${process.env.NAVITIA_ACCESS}@api.navitia.io/v1/coverage/${country}-${state}/physical_modes/physical_mode:Metro/coords/${long2};${lat2}/stop_schedules/departures?from_datetime=${dateTime}&count=100`;
@@ -188,11 +186,9 @@ router.post('/:savedId', function(req, res) {
             if (err) return res.status(400).send(err);
 
             body3 = JSON.parse(body3);
-            console.log("body 3", body3);
 
             var departureObj = body3.departures.reduce(function(acc, departure) {
               var direction = departure.display_informations.direction;
-              console.log("direction", direction);
               var timeStr = departure.stop_date_time.departure_date_time;
 
               time = moment(timeStr).format("MM/DD/YYYY, h:mm a");
@@ -215,8 +211,6 @@ router.post('/:savedId', function(req, res) {
               "miles":miles
             }
             var result = [departureObj, location];
-            console.log("departureObj", departureObj);
-            console.log("result", result);
             res.send(result);
           })
         })
