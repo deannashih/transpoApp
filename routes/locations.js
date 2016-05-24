@@ -59,8 +59,6 @@ router.post('/currentPosition', function(req, res) {
           var dateTime = new Date();
           console.log("dateTimeBefore", dateTime);
           var localDateTimeOffset = dateTime.getTimezoneOffset();
-          // var localDateTime =
-          // console.log("localDateTime", localDateTime);
           var date = dateTime.toISOString().substring(0, 10);
           date = date.split('-').join('');
           var time = dateTime.toLocaleTimeString('en-US', {
