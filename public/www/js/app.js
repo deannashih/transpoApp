@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.services', 'ngCordova'])
   .constant('API', {
-    url: 'https://public-transportation-app.herokuapp.com/'
+    url: 'http://localhost:3000/'
   })
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -23,10 +23,6 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
         StatusBar.styleDefault();
       }
     });
-    // $stormpath.uiRouter({
-    //   loginState: 'login',
-    //   defaultPostLoginState: 'tab.favorites'
-    // });
   })
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -97,28 +93,6 @@ angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.ser
           }
         }
       });
-
-
-      // .state('auth', {
-      //   url:'/auth',
-      //   templateUrl: 'www/templates/auth.html',
-      //   abstract:true
-      // })
-      //
-      //
-      // .state('auth.register', {
-      //     url: '/register',
-      //     templateUrl: 'www/templates/register.html',
-      //     controller: 'authCtrl'
-      //     }
-      //   )
-      //   .state('auth.login', {
-      //       url: '/login',
-      //       templateUrl: 'www/templates/login.html',
-      //       controller: 'authCtrl'
-      //
-      //   });
-
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('tab/home');
 

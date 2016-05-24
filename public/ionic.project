@@ -4,7 +4,7 @@
   "proxies": [
     {
       "path": "/locations",
-      "proxyUrl": "https://publictranspodb.herokuapp.com/locations"
+      "proxyUrl": "http://localhost:3000/locations"
     }
   ]
 }
