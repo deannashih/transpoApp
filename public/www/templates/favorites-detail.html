@@ -2,7 +2,17 @@
 <ion-view view-title="{{location.currentCity}}">
   <ion-content>
 
-    <div class="container-fluid white">
+    <div class="container-fluid" ng-if="!locationLoaded">
+      <div class="row text-center">
+        <br>
+        <br>
+        <br>
+      <img src="lib/loading/loading-spinning-bubbles.svg">
+      <h6>Loading your selected city...</h6>
+    </div>
+</div>
+
+    <div class="container-fluid white" ng-if="locationLoaded">
       <div class="row text-center">
         <table class="table">
           <tbody>
@@ -12,7 +22,6 @@
               </td>
               <td class="right">
                 <strong>{{location.currentCity}}</strong>
-                <button class="btn btn-red" ng-click="saveLocation(location)">save this city</button>
               </td>
             </tr>
             <tr>
@@ -30,14 +39,7 @@
   </div>
 
   </div>
-</ion-content>
-  <div class="row text-center">
 
-    <button class="btn btn-red" ng-click="setAsHome(location)">set as home</button>
-
-    <button class="btn btn-primary" ng-click="saveLocation(location)">save location</button>
-
-  </div>
 
     <div class="col-xs-12 card" ng-repeat="(route, times) in location.departures">
 

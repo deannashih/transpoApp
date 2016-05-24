@@ -2,6 +2,8 @@ angular.module('transpoApp.controllers', [])
 
 .controller('FaveCtrl', function($scope, $cordovaGeolocation, HomeService, $state) {
 
+  $scope.locationLoaded = false;
+
   var options = {
     timeout: 5000,
     enableHighAccuracy: true
@@ -45,13 +47,13 @@ angular.module('transpoApp.controllers', [])
                 HomeService.passSavedLocation(selectedLocation)
                 .then(function(res){
                   console.log("pass Saved location res", res.data);
-                })
-
+                  $scope.locationLoaded = true;
+                  
                   $state.go('tab.favorites-detail', {
                     'id':marker.title
                   })
-                  // infowindow.setContent('<h3>' + this.title + '</h3>');
-                  // infowindow.open(map, this);
+                })
+
 
               });
 
@@ -109,6 +111,7 @@ angular.module('transpoApp.controllers', [])
           $scope.location.currentCity = `${res.data[1].city}, ${res.data[1].state}`;
           $scope.location.nearestStation = res.data[1].nearestStation;
           $scope.location.miles = res.data[1].miles.toFixed(2);
+
           $scope.quantity = 5;
           $scope.limited = true;
 

@@ -1,10 +1,4 @@
 {
   "name": "pubTranspo",
-  "app_id": "c9c4c95c",
-  "proxies": [
-    {
-      "path": "/locations",
-      "proxyUrl": "http://public-transportation-app.herokuapp.com/locations"
-    }
-  ]
+  "app_id": "c9c4c95c"
 }

@@ -39,6 +39,7 @@ angular.module('transpoApp.services', [])
   this.passSavedLocation = function(marker){
     console.log("marker", marker);
     var savedId = marker.id;
+    console.log("savedId", savedId);
     return $http.post(API.url + `locations/${savedId}`, marker)
   }
 

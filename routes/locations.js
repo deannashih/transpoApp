@@ -127,11 +127,15 @@ router.post('/:savedId', function(req, res) {
     console.log("req.params.id", req.params.savedId);
     console.log("req.body of saved id", req.body);
 
+    var lat = req.body.lat;
+    var long = req.body.long;
+
     request(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&result_type=street_address&key=AIzaSyCAwroDQHkIDCAthjHtGDijl1BeuG-3mr4`, function(err, response, body) {
 
         if (err) return res.status(400).send(err);
 
         body = JSON.parse(body);
+        console.log("goog detail body", body);
         var address = body.results[0].formatted_address.split(', ');
         var city = address[1];
         var state = address[2].split(' ');
