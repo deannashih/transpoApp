@@ -60,12 +60,18 @@ angular.module('transpoApp.controllers', [])
             }//end for loop
 
         });
+      }) //end cordovaGeolocation
+
+      HomeService.getSavedLocation(location)
+      .then(function(res){
+        console.log("get Saved location res", res.data);
+      }, function(err){
+        console.log("get saved location err", err);
       })
 
 
   })
   .controller('FaveDetailCtrl', function($scope, HomeService, $cordovaGeolocation, $http, API, $state){
-
   })
 
 .controller('HomeCtrl', function($scope, HomeService, $cordovaGeolocation, $http, API, $state) {
