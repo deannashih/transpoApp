@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('transpoApp', ['ionic', 'transpoApp.controllers', 'transpoApp.services', 'ngCordova'])
   .constant('API', {
-    url: 'https://public-transportation-app.herokuapp.com/'
+    url: 'http://public-transportation-app.herokuapp.com/'
   })
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

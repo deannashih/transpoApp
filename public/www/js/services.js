@@ -1,11 +1,11 @@
 'use strict';
 angular.module('transpoApp.services', [])
 
-.service('HomeService', function($http, API, $q) {
+.service('HomeService', function($http, API, $q, $state) {
 
   var deferred = $q.defer();
 
-  this.data = [];
+  var data = [];
 
   this.getHomeLocation = function(){
     return $http.get(API.url + `locations`)
@@ -41,12 +41,19 @@ angular.module('transpoApp.services', [])
     var savedId = marker.id;
     console.log("savedId", savedId);
     return $http.post(API.url + `locations/${savedId}`, marker)
+    .then(function(res){
+      data.push(res.data);
+      return data;
+    })
   }
 
-  this.getSavedLocation = function(location){
-    console.log("get saved location", location);
-    var savedId = location.id;
+  this.getSavedLocation = function(){
+    console.log("data", data);
+    var savedId = $state.params.id;
     return $http.get(API.url + `locations/${savedId}`)
+    .then(function(res){
+      return data;
+    })
   }
 
 });

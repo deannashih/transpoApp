@@ -124,6 +124,7 @@ router.post('/', function(req, res) {
 });
 
 router.get('/:savedId', function(req, res){
+  console.log("get saved location req params", req.params.savedId);
   console.log("get saved location req.body", req.body);
   Location.findById(req.params.savedId, function(err, location){
     console.log("get saved location", location);

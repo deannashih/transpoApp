@@ -35,20 +35,17 @@ angular.module('transpoApp.controllers', [])
                 position: new google.maps.LatLng($scope.locations[i].lat, $scope.locations[i].long),
                 title: $scope.locations[i]._id
               });
-              console.log("marker.position", marker.position);
               google.maps.event.addListener(marker, 'click', function(){
                 var selectedLocation = {
                   lat: this.position.lat(),
                   long: this.position.lng(),
                   id: this.title
                 }
-                console.log("savedLocation", selectedLocation);
+                console.log("selectedLocation", selectedLocation);
 
                 HomeService.passSavedLocation(selectedLocation)
-                .then(function(res){
-                  console.log("pass Saved location res", res.data);
+                .then(function(returnedData){
                   $scope.locationLoaded = true;
-                  console.log("selectedLocation", selectedLocation);
                   $state.go('tab.favorites-detail', {
                     'id':selectedLocation.id
                   })
@@ -62,16 +59,24 @@ angular.module('transpoApp.controllers', [])
         });
       }) //end cordovaGeolocation
 
-      HomeService.getSavedLocation(location)
-      .then(function(res){
-        console.log("get Saved location res", res.data);
-      }, function(err){
-        console.log("get saved location err", err);
-      })
-
 
   })
   .controller('FaveDetailCtrl', function($scope, HomeService, $cordovaGeolocation, $http, API, $state){
+    console.log("fave detail ctrl loaded");
+    $scope.location = {};
+    HomeService.getSavedLocation()
+    .then(function(res){
+      console.log("getSavedLocation res", res[0]);
+
+      var newData = res[0];
+      $scope.locationLoaded = true;
+      $scope.location.departures = newData[0];
+      $scope.location.currentCity = `${newData[1].city}, ${newData[1].state}`;
+      $scope.location.nearestStation = newData[1].nearestStation;
+      $scope.location.miles = newData[1].miles.toFixed(2);
+    })
+
+
   })
 
 .controller('HomeCtrl', function($scope, HomeService, $cordovaGeolocation, $http, API, $state) {
