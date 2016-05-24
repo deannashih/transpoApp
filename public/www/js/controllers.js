@@ -64,6 +64,9 @@ angular.module('transpoApp.controllers', [])
 
 
   })
+  .controller('FaveDetailCtrl', function($scope, HomeService, $cordovaGeolocation, $http, API, $state){
+
+  })
 
 .controller('HomeCtrl', function($scope, HomeService, $cordovaGeolocation, $http, API, $state) {
   // With the new view caching in Ionic, Controllers are only called
@@ -157,10 +160,6 @@ angular.module('transpoApp.controllers', [])
 
 
 
-})
-
-.controller('FaveDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AboutCtrl', function($scope) {

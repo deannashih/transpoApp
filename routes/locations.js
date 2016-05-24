@@ -123,6 +123,15 @@ router.post('/', function(req, res) {
   })
 });
 
+router.get('/:savedId', function(req, res){
+  console.log("get saved location req.body", req.body);
+  Location.findById(req.params.savedId, function(err, location){
+    console.log("get saved location", location);
+    if (err) return res.status(400).send(err);
+    res.send(location);
+  })
+})
+
 router.post('/:savedId', function(req, res) {
     console.log("req.params.id", req.params.savedId);
     console.log("req.body of saved id", req.body);

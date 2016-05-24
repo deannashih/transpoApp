@@ -43,4 +43,9 @@ angular.module('transpoApp.services', [])
     return $http.post(API.url + `locations/${savedId}`, marker)
   }
 
+  this.getSavedLocation = function(location){
+    console.log("get saved location", location);
+    return $http.get(API.url + `locations/${savedId}`)
+  }
+
 });
