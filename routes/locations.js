@@ -19,7 +19,9 @@ router.post('/currentPosition', function(req, res) {
     var lat = req.body.lat;
     var long = req.body.long;
     request(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&result_type=street_address&key=AIzaSyCAwroDQHkIDCAthjHtGDijl1BeuG-3mr4`, function(err, response, body) {
-        if (err) return res.send(err);
+
+
+        if (err) return res.status(400).send(err);
 
         body = JSON.parse(body);
         var address = body.results[0].formatted_address.split(', ');
@@ -41,6 +43,10 @@ router.post('/currentPosition', function(req, res) {
         //new york -73.9968231;40.7351595
         //san francisco -122.4194;37.7749
         request(`http://${process.env.NAVITIA_ACCESS}@api.navitia.io/v1/coord/${long};${lat}/places_nearby?distance=16904&count=100&type[]=stop_area&filter=physical_mode.uri=physical_mode:Metro`, function(err, response2, body2) {
+          if (err) {
+            console.log("err body2", err);
+            return res.status(400).send(err);
+          }
           body2 = JSON.parse(body2);
           console.log("body 2", body2);
 
@@ -65,6 +71,9 @@ router.post('/currentPosition', function(req, res) {
           dateTime = date + time;
 
           request(`https://${process.env.NAVITIA_ACCESS}@api.navitia.io/v1/coverage/${country}-${state}/physical_modes/physical_mode:Metro/coords/${long2};${lat2}/stop_schedules/departures?from_datetime=${dateTime}&count=100`, function(err, response3, body3) {
+
+            if (err) return res.status(400).send(err);
+
             body3 = JSON.parse(body3);
             console.log("body 3", body3);
 
