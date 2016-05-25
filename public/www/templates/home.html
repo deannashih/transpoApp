@@ -62,11 +62,11 @@
         </div>
         <div class="card-block">
           <ul>
-            <li ng-repeat="time in times | limitTo: quantity">{{time}}</li>
+            <li ng-repeat="time in times | limitTo: statuses[route].quantity">{{time}}</li>
           </ul>
           <div align="center">
-          <button class="btn btn-red" ng-click="seeMore()" ng-show="limited">See More</button>
-          <button class="btn btn-red" ng-click="hide()" ng-show="notLimited">Hide</button>
+          <button class="btn btn-red" ng-click="seeMore(route)" ng-show="statuses[route].limited">See More</button>
+          <button class="btn btn-red" ng-click="hide(route)" ng-show="!statuses[route].limited">Hide</button>
         </div>
         </div>
       </div>

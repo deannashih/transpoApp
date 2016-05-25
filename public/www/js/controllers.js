@@ -122,23 +122,28 @@ angular.module('transpoApp.controllers', [])
           $scope.locationLoaded = true;
           console.log("send current location res", res.data);
           $scope.location.departures = res.data[0];
+          console.log("$scope.location.departures", $scope.location.departures);
           $scope.location.currentCity = `${res.data[1].city}, ${res.data[1].state}`;
           $scope.location.nearestStation = res.data[1].nearestStation;
           $scope.location.miles = res.data[1].miles.toFixed(2);
 
-          $scope.quantity = 5;
-          $scope.limited = true;
+          $scope.statuses = {};
 
-          $scope.notLimited = false;
-          $scope.seeMore = function(){
-            $scope.limited = false;
-            this.quantity = $scope.quantity;
-            this.quantity = this.times.length;
+          for (var line in $scope.location.departures){
+              console.log("line", line);
+              $scope.statuses[line] = {
+                quantity:5,
+                limited:true
+              }
           }
-          $scope.hide = function(){
-            $scope.limited = true;
-            $scope.notLimited = true;
-            this.quantity = 5;
+
+          $scope.seeMore = function(route){
+            $scope.statuses[route].limited = false;
+            $scope.statuses[route].quantity = this.times.length;
+          }
+          $scope.hide = function(route){
+            $scope.statuses[route].limited = true;
+            $scope.statuses[route].quantity = 5;
           }
           console.log("$scope location departures", $scope.location.departures);
           $scope.saveLocation = function(location) {

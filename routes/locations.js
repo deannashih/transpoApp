@@ -181,8 +181,7 @@ router.post('/:savedId', function(req, res) {
           var dateTime = new Date();
           console.log("dateTimeBefore", dateTime);
           var localDateTimeOffset = dateTime.getTimezoneOffset();
-          var date = dateTime.toISOString().substring(0, 10);
-          date = date.split('-').join('');
+          var date = dateTime.toISOString().substring(0, 10).split('-').join('');
           var time = dateTime.toLocaleTimeString('en-US', {
             hour12: false
           });
